@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /test/
+
+# Weiterleitung für Uploads und Vorschaubilder
+RewriteRule ^data/uploads/(.*)$ data/uploads/$1 [L]
+RewriteRule ^data/uploads/previews/(.*)$ data/uploads/previews/$1 [L]
+
+# PHP-Dateien verarbeiten
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L] 
